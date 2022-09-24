@@ -1,0 +1,22 @@
+{
+	"api_file_name": "app2test",
+	"imports": [],
+	"variables": [],
+	"apis": [
+		{
+			"api_name": "app",
+			"main_api": 1,
+			"endpoints": [
+				{
+					"method": "get",
+					"route": "",
+					"name": "root",
+					"params": "",
+					"payload": "{'Hello': 'World'}"
+				}
+			]
+		}
+	],
+	"port": 8000,
+	"host": "127.0.0.2"
+}

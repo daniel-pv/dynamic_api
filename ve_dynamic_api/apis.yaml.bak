@@ -1,0 +1,12 @@
+---
+- port: 1
+  route: '/my_route'
+  name: ''
+  content:
+  - 'test'
+  - '<h1>hey</h1>'
+- port: 2
+  route: '/'
+  content:
+  - 'test'
+  - '<h1>hey</h1>'

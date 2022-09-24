@@ -1,0 +1,60 @@
+[
+	{
+		"api_file_name": "app5",
+		"imports": [
+			"from typing import Union",
+			"from pydantic import BaseModel"
+		],
+		"variables": [
+			"class Item(BaseModel):",
+			"    name: str",
+			"    price: float",
+			"    is_offer: Union[bool, None] = None"
+		],
+		"apis": [
+			{
+				"api_name": "app",
+				"main_api": 1,
+				"endpoints": [
+					{
+						"method": "get",
+						"route": "",
+						"name": "root",
+						"params": "",
+						"payload": "{'Hello': 'World'}"
+					},
+					{
+						"method": "get",
+						"route": "items/{item_id}",
+						"name": "get_item",
+						"params": "item_id: int, q: Union[str, None] = None",
+						"payload": "{'item_id': item_id, 'q': q}"
+					},
+					{
+						"method": "put",
+						"route": "items/{item_id}",
+						"name": "put_item",
+						"params": "item_id: int, item: Item",
+						"payload": "{'item_name': item.name, 'item_id': item_id}"
+					}
+				]
+			},
+			{
+				"api_name": "subapp",
+				"main_api": 0,
+				"variables": [],
+				"endpoints": [
+					{
+						"method": "get",
+						"route": "sub",
+						"name": "sub",
+						"params": "",
+						"payload": "{'browsers':{'firefox':{'name':'Firefox','pref_url':'about:config','releases':{'1':{'release_date':'2004-11-09','status':'retired','engine':'Gecko','engine_version':'1.7'}}}}}"
+					}
+				]
+			}
+		],
+		"port": 800,
+		"host": "127.0.0.2"
+	}
+]

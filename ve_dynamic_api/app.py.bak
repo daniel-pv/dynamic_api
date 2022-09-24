@@ -1,0 +1,57 @@
+import uvicorn
+from fastapi import FastAPI, status
+from pydantic import BaseModel
+
+app = FastAPI()
+
+
+class Item(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    tax: float | None = None
+    tags: set[str] = set()
+
+
+@app.post("/items/", response_model=Item, status_code=status.HTTP_201_CREATED)
+async def create_item(item: Item):
+    return item
+
+@app.post("/books/", response_model=Item, status_code=status.HTTP_201_CREATED)
+async def create_item(item: Item):
+    return item
+
+@app.post("/yolos/", response_model=Item, status_code=status.HTTP_201_CREATED)
+async def create_item(item: Item):
+    return item
+
+@app.post("/atun/", response_model=Item, status_code=status.HTTP_201_CREATED)
+async def create_item(item: Item):
+    return item
+
+#app
+#name=test
+#method=METHOD.get
+#lines=1
+@app.get("//test/", response_model=Item, status_code=status.HTTP_201_CREATED)
+async def get_Item(item: Item):
+    return {"message": "Hello World from main app"}
+
+
+subapi = FastAPI()
+app.mount("/subapi", subapi)
+@subapi.get("/sub3")
+def read_sub():
+    return {"message": "Hellorom sub API"}
+@subapi.get("/sub")
+def read_sub():
+    return {"message": "Hello World from sub API"}
+
+subapi2 = FastAPI()
+app.mount("/subapi2", subapi)
+@subapi2.get("/sub23")
+def read_sub():
+    return {"message": "Hellorom sub API22"}
+
+if __name__ == "__main__":
+    uvicorn.run('app:app', host="127.0.0.2", port=812, reload=True, access_log=False)
